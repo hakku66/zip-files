@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patwa.view.company.CompanyController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="29.0" prefHeight="31.0" prefWidth="281.0" text="Your Company Details" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffef1" height="224.0" layoutX="37.0" layoutY="68.0" stroke="#f2d9d9" strokeType="INSIDE" width="531.0" />
+      <TextField fx:id="nameId" editable="false" layoutX="282.0" layoutY="81.0" prefHeight="31.0" prefWidth="233.0" />
+      <TextField fx:id="panNoId" layoutX="282.0" layoutY="123.0" prefHeight="31.0" prefWidth="233.0" promptText="PAN No" />
+      <TextField fx:id="bankNameId" layoutX="282.0" layoutY="166.0" prefHeight="31.0" prefWidth="233.0" promptText="Bank Name" />
+      <TextField fx:id="bankAcNoId" layoutX="282.0" layoutY="209.0" prefHeight="31.0" prefWidth="233.0" promptText="Account No" />
+      <TextField fx:id="bankIfscId" layoutX="282.0" layoutY="253.0" prefHeight="31.0" prefWidth="233.0" promptText="IFSC Code" />
+      <Button layoutX="240.0" layoutY="313.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="121.0" text="UPDATE" />
+      <Label layoutX="59.0" layoutY="80.0" prefHeight="31.0" prefWidth="203.0" text="Company Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="123.0" prefHeight="31.0" prefWidth="203.0" text="PAN No">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="166.0" prefHeight="31.0" prefWidth="203.0" text="BANK Name">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="209.0" prefHeight="31.0" prefWidth="203.0" text="Acount No">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="253.0" prefHeight="31.0" prefWidth="203.0" text="IFSC Code">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="msg" layoutX="283.0" layoutY="354.0" text="DONE" textFill="#0b971e">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

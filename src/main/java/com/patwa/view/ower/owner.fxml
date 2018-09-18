@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patwa.view.ower.OwnerController">
+   <children>
+      <SplitPane dividerPositions="0.7646076794657763" layoutX="456.0" layoutY="213.0" prefHeight="700.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ScrollPane layoutX="133.0" layoutY="50.0" prefHeight="798.0" prefWidth="912.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <TableView fx:id="tableOwnerid" prefHeight="678.0" tableMenuButtonVisible="true">
+                          <columns>
+                            <TableColumn fx:id="iNo" prefWidth="44.0" text="No" />
+                            <TableColumn fx:id="name" prefWidth="106.0" text="Name" />
+                              <TableColumn fx:id="email" prefWidth="112.0" text="Email" />
+                              <TableColumn fx:id="phone1" prefWidth="95.0" text="Phone1" />
+                              <TableColumn fx:id="phone2" prefWidth="110.0" text="Phone2" />
+                              <TableColumn fx:id="state" minWidth="7.0" prefWidth="117.0" text="State" />
+                              <TableColumn fx:id="city" minWidth="0.0" prefWidth="91.0" text="City" />
+                              <TableColumn fx:id="address" minWidth="0.0" prefWidth="200.0" text="Address" />
+                              <TableColumn fx:id="pin" maxWidth="73.0" minWidth="0.0" prefWidth="69.0" text="Pin" />
+                              <TableColumn fx:id="created" prefWidth="100.0" text="Created" />
+                              <TableColumn fx:id="aliasName" prefWidth="100.0" text="Alias Name" />
+                              <TableColumn fx:id="panNo" prefWidth="100.0" text="Pan No" />
+                              <TableColumn fx:id="gstNo" minWidth="0.0" prefWidth="150.0" text="GST No" />
+                              <TableColumn fx:id="active" minWidth="1.0" prefWidth="75.0" text="Active" />
+                          </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="nameId" layoutX="45.0" layoutY="47.0" promptText="Owner Name" />
+                  <TextField fx:id="emailId" layoutX="45.0" layoutY="87.0" promptText="Email" />
+                  <TextField fx:id="phone1Id" layoutX="45.0" layoutY="127.0" promptText="Phone 1" />
+                  <TextField fx:id="phone2Id" layoutX="45.0" layoutY="168.0" promptText="Phone 2" />
+                  <ChoiceBox fx:id="stateId" layoutX="44.0" layoutY="210.0" prefHeight="31.0" prefWidth="187.0" />
+                  <TextField fx:id="cityId" layoutX="45.0" layoutY="252.0" promptText="City" />
+                  <TextField fx:id="addressId" layoutX="45.0" layoutY="292.0" promptText="Address Line" />
+                  <TextField fx:id="pinId" layoutX="45.0" layoutY="332.0" promptText="Pincode" />
+                  <TextField fx:id="aliasNameId" layoutX="46.0" layoutY="374.0" promptText="Alias Name" />
+                  <TextField fx:id="panNoId" layoutX="46.0" layoutY="412.0" promptText="PAN No" />
+                  <TextField fx:id="gstNoId" layoutX="46.0" layoutY="453.0" promptText="GST No" />
+                  <TextField fx:id="companyId" layoutX="47.0" layoutY="495.0" promptText="Company Name" />
+                  <CheckBox fx:id="activeId" layoutX="46.0" layoutY="548.0" mnemonicParsing="false" selected="true" text="Active" />
+                  <Button layoutX="125.0" layoutY="543.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="31.0" prefWidth="107.0" text="ADD" />
+                  <Button layoutX="44.0" layoutY="588.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="31.0" prefWidth="81.0" text="UPDATE" />
+                  <Button layoutX="142.0" layoutY="588.0" mnemonicParsing="false" onAction="#onDelete" prefHeight="31.0" prefWidth="91.0" text="DELETE" />
+                  <Button layoutX="46.0" layoutY="631.0" mnemonicParsing="false" onAction="#getCompanyDetail" prefHeight="31.0" prefWidth="187.0" text="Company Detail" />
+                  <Label alignment="CENTER" layoutX="26.0" layoutY="1.0" prefHeight="31.0" prefWidth="232.0" text="Manage Owner And Company" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

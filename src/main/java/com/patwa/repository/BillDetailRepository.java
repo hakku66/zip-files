@@ -1,0 +1,20 @@
+package com.patwa.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.patwa.model.BillDetail;
+
+public interface BillDetailRepository extends JpaRepository<BillDetail, Integer>{
+	
+	public List<BillDetail> findBillDetailByReceiptId(String receiptId);
+	
+	@Transactional
+	@Modifying
+	@Query(value="delete from bill_details where receipt_id= ?1", nativeQuery = true)
+	public void deleteBillDetailsByReceiptId(String receiptId);
+}

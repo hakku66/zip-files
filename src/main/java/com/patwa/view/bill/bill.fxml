@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1207.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patwa.view.bill.BillController">
+   <items>
+      <SplitPane dividerPositions="0.19627507163323782" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="152.0" prefWidth="1198.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="530.0" layoutY="-2.0" prefHeight="32.0" prefWidth="154.0" text="BILL GENERATOR" textAlignment="CENTER" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="155.0" layoutY="6.0" prefHeight="21.0" prefWidth="52.0" text="Seller" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="seller" layoutX="207.0" layoutY="1.0" prefWidth="150.0" />
+                  <Line endX="1100.0" layoutX="101.0" layoutY="34.0" startX="-100.0" stroke="#979797" strokeWidth="0.3" />
+                  <Label alignment="CENTER" layoutX="775.0" layoutY="4.0" prefHeight="21.0" prefWidth="84.0" text="Customer" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="buyer" layoutX="859.0" layoutY="1.0" prefWidth="150.0" promptText="Alias Name" />
+                  <Line endX="69.0" layoutX="580.0" layoutY="83.0" rotate="90.0" startX="-30.0" stroke="#a1a1a1" strokeWidth="0.5" />
+                  <Label fx:id="sellerName" layoutX="14.0" layoutY="36.0" prefHeight="21.0" prefWidth="182.0" />
+                  <Label fx:id="sellerAddress" alignment="TOP_LEFT" layoutX="14.0" layoutY="56.0" prefHeight="69.0" prefWidth="270.0" wrapText="true" />
+                  <Label fx:id="sellerGst" layoutX="322.0" layoutY="37.0" prefHeight="21.0" prefWidth="215.0" />
+                  <Label fx:id="sellerPhones" layoutX="322.0" layoutY="57.0" />
+                  <Label fx:id="sellerEmail" layoutX="322.0" layoutY="77.0" />
+                  <Label fx:id="sellerBank" layoutX="322.0" layoutY="98.0" />
+                  <TextField fx:id="buyerName" layoutX="600.0" layoutY="35.0" prefHeight="31.0" prefWidth="203.0" promptText="Name" />
+                  <TextArea fx:id="buyerAddress" layoutX="600.0" layoutY="68.0" prefHeight="63.0" prefWidth="203.0" promptText="Address" wrapText="true" />
+                  <TextField fx:id="buyerPan" layoutX="859.0" layoutY="35.0" promptText="PAN or Adhar No" />
+                  <TextField fx:id="buyerGst" layoutX="859.0" layoutY="67.0" promptText="GST No" />
+                  <TextField fx:id="buyerCity" layoutX="859.0" layoutY="100.0" promptText="City" />
+                  <CheckBox fx:id="autoSave" layoutX="1096.0" layoutY="107.0" mnemonicParsing="false" selected="true" text="Auto Save" />
+                  <Line endX="1000.0" layoutX="202.0" layoutY="133.0" opacity="0.43" startX="-206.0" stroke="#b2acac" />
+               </children>
+            </AnchorPane>
+            <BorderPane>
+               <center>
+                <!-- <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children> -->
+                        <ScrollPane layoutX="335.0" layoutY="82.0" prefHeight="366.0" prefWidth="1198.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <TableView fx:id="tableBillDetailid" prefHeight="378.0" prefWidth="1196.0">
+                                <columns>
+                                  <TableColumn fx:id="iNo" prefWidth="50.0" text="No." />
+                                  <TableColumn fx:id="idescription" prefWidth="261.0" text="Description" />
+                                  <TableColumn fx:id="ihsnCode" prefWidth="81.0" text="HSN Code" />
+                                  <TableColumn fx:id="irate" prefWidth="50.0" text="MRP" />
+                                  <TableColumn fx:id="iqty" prefWidth="51.0" text="QTY" />
+                                  <TableColumn fx:id="iper" prefWidth="43.0" text="Per" />
+                                  <TableColumn fx:id="idiscVal" prefWidth="124.0" text="Discount on one" />
+                                  <TableColumn fx:id="itotalDisc" prefWidth="110.0" text="Total Discount" />
+                              <TableColumn fx:id="iGST" prefWidth="54.0" text="GST %" />
+                              <TableColumn fx:id="iTax" prefWidth="273.0" text="Total Tax Amount">
+                                 <columns>
+                                    <TableColumn fx:id="iCgstAmount" prefWidth="64.0" text="CGST " />
+                                    <TableColumn fx:id="iSgstAmount" prefWidth="68.0" text="SGST" />
+                                    <TableColumn fx:id="iIgstAmount" prefWidth="56.0" text="IGST" />
+                                    <TableColumn prefWidth="75.0" text="iCESS" />
+                                 </columns>
+                              </TableColumn>
+                                  <TableColumn fx:id="iamount" maxWidth="500.0" prefWidth="108.0" text="Gross Total" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                     <!-- </children>
+                  </AnchorPane> -->
+               </center>
+               <bottom>
+                  <FlowPane alignment="TOP_RIGHT" columnHalignment="RIGHT" prefHeight="135.0" prefWidth="1198.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="831.0" />
+                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="131.0" text="Taxable Amount">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label fx:id="taxableAmtId" alignment="CENTER_RIGHT" contentDisplay="TOP" ellipsisString="&quot;&quot;" prefHeight="23.0" prefWidth="224.0" style="-fx-border-color: #b2acac;" textAlignment="RIGHT">
+                           <FlowPane.margin>
+                              <Insets />
+                           </FlowPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding></Label>
+                        <Label prefHeight="21.0" prefWidth="531.0" />
+                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="61.0" text="TAX">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sGSTId" style="-fx-border-color: #b2acac;" />
+                        <Label fx:id="cGSTId" style="-fx-border-color: #b2acac;" />
+                        <Label fx:id="iGSTId" style="-fx-border-color: #b2acac;" />
+                        <Label fx:id="iCess" />
+                        <Label fx:id="totalTaxId" alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="224.0" style="-fx-border-color: #b2acac;">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding></Label>
+                        <Label prefHeight="21.0" prefWidth="403.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label prefHeight="21.0" prefWidth="147.0" text="TRANSPORTATION">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tranportType" alignment="CENTER" prefHeight="23.0" prefWidth="224.0" promptText="Transport Type">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </TextField>
+                        <TextField fx:id="tranportCharge" alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="123.0" promptText="transport charge">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding></TextField>
+                        <Label prefHeight="21.0" prefWidth="910.0" />
+                        <Label text="TOTAL : ">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="TOTAL" alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="224.0" style="-fx-border-color: #b2acac;">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="75.0" text="ReSet" />
+                        <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#generateBill" prefHeight="31.0" prefWidth="224.0" text="GENERATE BILL" textFill="#fa0505">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <effect>
+                              <Lighting diffuseConstant="1.17" specularConstant="1.01" specularExponent="17.56" surfaceScale="1.01">
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant color="#c6eba9" />
+                                 </light>
+                              </Lighting>
+                           </effect>
+                        </Button>
+                     </children>
+                  </FlowPane>
+               </bottom>
+               <top>
+                  <AnchorPane prefHeight="42.0" prefWidth="1198.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField fx:id="description" alignment="TOP_CENTER" layoutX="52.0" layoutY="5.0" prefHeight="31.0" prefWidth="300.0" promptText="Description" />
+                        <Label fx:id="hsnCode" alignment="CENTER" layoutX="352.0" layoutY="5.0" prefHeight="31.0" prefWidth="100.0" text="HSN no" />
+                        <TextField fx:id="qty" alignment="CENTER" layoutX="451.0" layoutY="5.0" prefHeight="31.0" prefWidth="100.0" promptText="QTY" />
+                        <TextField fx:id="rate" alignment="CENTER" layoutX="551.0" layoutY="5.0" prefHeight="31.0" prefWidth="100.0" promptText="Rate" />
+                        <ChoiceBox fx:id="per" layoutX="651.0" layoutY="5.0" prefHeight="31.0" prefWidth="75.0" />
+                        <TextField fx:id="discVal" alignment="CENTER" layoutX="726.0" layoutY="5.0" prefHeight="31.0" prefWidth="116.0" promptText="Disc Val" />
+                        <Button defaultButton="true" layoutX="895.0" layoutY="6.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="31.0" prefWidth="95.0" text="ADD">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="1031.0" layoutY="5.0" mnemonicParsing="false" onAction="#onDelete" prefHeight="31.0" prefWidth="95.0" text="Delete" />
+                     </children>
+                     <effect>
+                        <Lighting diffuseConstant="1.37" specularConstant="0.0" specularExponent="17.07" surfaceScale="0.0">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant color="#f0fffa" />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </AnchorPane>
+               </top>
+            </BorderPane>
+        </items>
+      </SplitPane>
+   </items>
+</SplitPane>

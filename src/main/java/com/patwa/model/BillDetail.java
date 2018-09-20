@@ -22,7 +22,7 @@ public class BillDetail {
 	private double rate;
 	private double qty;
 	@Column(name="disc_val")
-	private String discVal;
+	private double discVal;
 	@Column(name="disc_amt")
 	private double discAmt;
 	
@@ -112,10 +112,10 @@ public class BillDetail {
 	public void setQty(double qty) {
 		this.qty = qty;
 	}
-	public String getDiscVal() {
+	public double getDiscVal() {
 		return discVal;
 	}
-	public void setDiscVal(String discType) {
+	public void setDiscVal(double discType) {
 		this.discVal = discType;
 	}
 	public double getDiscAmt() {

@@ -41,12 +41,15 @@ public class BillController extends AbstractBillController{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		total= 0.0;
+		tranportChargeVal=0;
+		totalTax=0;
 		configureBillDetailTable();
 		configureOwner();
 		
 		custMap = custServ.getAllCustomerMap();
 		itemMap =itemServ.getAllItemMap();
-		
+
 		//for buyer
 		buyer.setOnKeyReleased(event -> {
 			  if (event.getCode() == KeyCode.ENTER){

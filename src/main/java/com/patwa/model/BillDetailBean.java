@@ -10,7 +10,7 @@ public class BillDetailBean {
 	private final SimpleDoubleProperty rQTY;
 	private final SimpleDoubleProperty rRate;
 	private final SimpleStringProperty rPer;
-	private final SimpleStringProperty rDiscVal;
+	private final SimpleDoubleProperty rDiscVal;
 	private final SimpleDoubleProperty rDiscAmt;
 	private final SimpleDoubleProperty rAmount;
 	private final SimpleDoubleProperty rcgst;
@@ -20,7 +20,7 @@ public class BillDetailBean {
 	private SimpleDoubleProperty rcess;
 	
 	public BillDetailBean(String rDescription, String rHSNCode, double rQTY,
-			double rRate, String rPer, String rDiscVal,
+			double rRate, String rPer, double rDiscVal,
 			double rDiscAmt, double rAmount,double rcgst,double rsgst,double rigst,double rgst, double rcess) {
 		super();
 		this.rDescription = new SimpleStringProperty(rDescription);
@@ -28,7 +28,7 @@ public class BillDetailBean {
 		this.rQTY = new SimpleDoubleProperty(rQTY);
 		this.rRate = new SimpleDoubleProperty(rRate);
 		this.rPer = new SimpleStringProperty(rPer);
-		this.rDiscVal = new SimpleStringProperty(rDiscVal);
+		this.rDiscVal = new SimpleDoubleProperty(rDiscVal);
 		this.rDiscAmt = new SimpleDoubleProperty(rDiscAmt);
 		this.rAmount = new SimpleDoubleProperty(rAmount);
 		this.rcgst=new SimpleDoubleProperty(rcgst);
@@ -81,10 +81,10 @@ public class BillDetailBean {
 		this.rPer.set(per);
 	}
 	
-	public String getRDiscVal() {
+	public double getRDiscVal() {
 		return rDiscVal.get();
 	}
-	public void setRDiscVal(String discVal){
+	public void setRDiscVal(double discVal){
 		this.rDiscVal.set(discVal);
 	}
 

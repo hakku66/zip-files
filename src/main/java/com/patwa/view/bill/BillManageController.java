@@ -145,6 +145,7 @@ public class BillManageController extends AbstractBillController{
 				int selectedIndex = tableBillReceipt.getSelectionModel().getSelectedIndex();
 				if (selectedIndex >= 0) {
 					failMsg.setVisible(false);
+					
 					String billReceiptId = tableBillReceipt.getItems().get(selectedIndex);
 					billReceipt = billReceiptService.getBillReceiptByReceiptId(billReceiptId);
 					//Customer Data

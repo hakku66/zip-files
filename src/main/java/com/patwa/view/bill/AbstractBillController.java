@@ -106,7 +106,7 @@ public abstract class AbstractBillController implements Initializable{
 	protected double tranportChargeVal =0;
 	@FXML TextField tranportType;
 	@FXML Label TOTAL;
-	protected double total;
+	protected double total=0;
 	
 	@Autowired
 	protected CustomerService custServ;
@@ -136,10 +136,10 @@ public abstract class AbstractBillController implements Initializable{
 	
 	private int customerId; 
 	private String customerGST;
-	private double totalSgst;
-	private double totalCgst;
-	private double totalIgst;
-	private double totalCess;
+	private double totalSgst=0;
+	private double totalCgst=0;
+	private double totalIgst=0;
+	private double totalCess=0;
 	
 	protected void setSellerInfo(String aliasName){
 		log.info("setSellerInfo : "+aliasName);
@@ -183,7 +183,7 @@ public abstract class AbstractBillController implements Initializable{
 	}
 	
 	protected void addTax(double sgst,double cgst,double igst,double cess){
-		totalSgst=totalCgst=totalIgst=totalCess=0.0;
+		//totalSgst=totalCgst=totalIgst=totalCess=0.0;
 		totalSgst = totalSgst + sgst;
 		totalCgst = totalCgst + cgst;
 		totalIgst = totalIgst + igst;
@@ -221,9 +221,7 @@ public abstract class AbstractBillController implements Initializable{
 					qty.setText(String.valueOf(billBean.getRQTY()));
 					rate.setText(String.valueOf(billBean.getRRate()));
 					//per.setValue(billBean.getRPer());
-					discVal.setText(billBean.getRDiscVal().contains("%")
-							? billBean.getRDiscVal().substring(0, billBean.getRDiscVal().length()-1) 
-									: billBean.getRDiscVal());
+					discVal.setText(String.valueOf(billBean.getRDiscVal()));
 				}
 			}
 		});
@@ -288,6 +286,7 @@ public abstract class AbstractBillController implements Initializable{
 		billData.clear();
 		tableBillDetailid.refresh();
 		isSameState = false;
+		totalSgst=totalCgst=totalIgst=totalCess=0.0;
 	}
 	
 	public void generateBill() throws JRException{
@@ -322,22 +321,22 @@ public abstract class AbstractBillController implements Initializable{
 		mapP.put("company", company);
 		mapP.put("billReceipt", billReceipt);
 		mapP.put("billDetailList", listBillDetail);
-		try{
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../print/Print.fxml"));
-						
-						PrintController printController=new PrintController();
-						
-						fxmlLoader.setController(printController);
-						Parent root = (Parent) fxmlLoader.load();
-						Scene scene = new Scene(root);
-						Stage stage = new Stage();
-						stage.setScene(scene);
-						stage.show();
-						printController.setDataFromBillingController(mapP);
-						
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+//		try{
+//			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../print/Print.fxml"));
+//						
+//						PrintController printController=new PrintController();
+//						
+//						fxmlLoader.setController(printController);
+//						Parent root = (Parent) fxmlLoader.load();
+//						Scene scene = new Scene(root);
+//						Stage stage = new Stage();
+//						stage.setScene(scene);
+//						stage.show();
+//						printController.setDataFromBillingController(mapP);
+//						
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
 		String file = PDFGenerator.generateBillPDF(map);
 		PDFGenerator.OpenPdfFile(file);
 		
@@ -346,6 +345,7 @@ public abstract class AbstractBillController implements Initializable{
 		log.info("PDF Gen :: Customer : "+c);
 		log.info("PDF Gen :: Bill Receipt : "+billReceipt);
 		log.info("PDF Gen :: PDF Path : "+file);
+	
 	}
 	
 	protected String saveBills(){
@@ -361,7 +361,7 @@ public abstract class AbstractBillController implements Initializable{
 		br.setTaxableAmt(getTaxableAmt());
 			br.setIgstAmt(totalIgst);
 			br.setCgstAmt(totalCgst);
-			br.setSgstAmt(totalIgst);
+			br.setSgstAmt(totalSgst);
 			br.setCessAmt(totalCess);
 		
 		br.setBillType(sellerGst.getText().isEmpty() ? "UNREG" : "REG");
@@ -506,7 +506,7 @@ public abstract class AbstractBillController implements Initializable{
 					_qty, 
 					_rate, 
 					item.getQtyType(), 
-					 String.valueOf(_discVal), 
+					 _discVal, 
 					totalDisc, (_amt-(cgst+sgst+igst+cess)),cgst,sgst,igst,item.getGstP(),cess);
 			
 			billData.add(billBean);

@@ -13,6 +13,7 @@ import com.patwa.model.BillDetailBean;
 import com.patwa.model.BillReceipt;
 import com.patwa.model.Company;
 import com.patwa.model.Customer;
+import com.patwa.model.Item;
 import com.patwa.model.Owner;
 import com.patwa.view.util.DateUtil;
 
@@ -129,9 +130,14 @@ public class BillManageController extends AbstractBillController{
 		int selectedIndex = tableBillDetailid.getSelectionModel().getSelectedIndex();
 	    if (selectedIndex >= 0) {
 	    	BillDetailBean billBean = tableBillDetailid.getItems().remove(selectedIndex);
+
+	    	setTaxableAmt(getTaxableAmt() - billBean.getRAmount()); 
+	    	totalSgst = totalSgst - billBean.getRsgst();
+			totalCgst = totalCgst - billBean.getRcgst();
+			totalIgst = totalIgst - billBean.getRigst();	
+			totalCess = totalCess - billBean.getRcess();
 	    	billData.remove(billBean);
 	    	log.info("Deleted item : "+ billBean);
-	    	setTaxableAmt(getTaxableAmt() - billBean.getRAmount()); 
 	    	totalTaxCalcutation();
 	    	setTotalAmt();
 	    }
@@ -232,21 +238,17 @@ public class BillManageController extends AbstractBillController{
 		br.setOwnerId(o.getOwnerId());
 		br.setCustomerId(getCustomerId());
 		br.setTaxableAmt(getTaxableAmt());
-		if(isSameState){
-			br.setIgstAmt(getTotalTax());
-		}else{
-			br.setCgstAmt(toDouble(getTaxableAmt()*2.50/100D));
-			br.setSgstAmt(toDouble(getTaxableAmt()*2.50/100D));
-		}
+
 		br.setBillType(sellerGst.getText().isEmpty() ? "UNREG" : "REG");
 		br.setTransportType(tranportType.getText());	
 		br.setReceiptDate(dateStr);
 		br.setTotal(getTotal()+getTranportChargeVal());
 		br.setTransportAmt(getTranportChargeVal());
-		br = billReceiptService.saveBillReceipt(br);
-		log.info("Updated Bills :: billReceipt detail : ",br);
+
+
 		//Delete all Bill Detail First
 		billDetailService.deleteBillDetailByreceipt(br.getReceiptId());
+		totalSgst=totalCgst=totalIgst=totalCess=0.0;
 		//Save new value
 		for(BillDetailBean billBean : billData){
 			BillDetail billDetail = new BillDetail();
@@ -265,10 +267,20 @@ public class BillManageController extends AbstractBillController{
 			billDetail.setCgst(billBean.getRcgst());
 			billDetail.setSgst(billBean.getRsgst());
 			billDetail.setIgst(billBean.getRigst());
-			
+			totalSgst = totalSgst + billBean.getRsgst();
+			totalCgst = totalCgst + billBean.getRcgst();
+			totalIgst = totalIgst + billBean.getRigst();	
+			totalCess = totalCess + billBean.getRcess();
 			billDetailService.saveBillDetail(billDetail);
 			log.info("Update Bill Details :: "+billDetail);
 		}
+		br.setCgstAmt(totalCgst);
+		br.setSgstAmt(totalSgst);
+		br.setIgstAmt(totalIgst);
+		br.setCessAmt(totalCess);
+	
+		br = billReceiptService.saveBillReceipt(br);
+		log.info("Updated Bills :: billReceipt detail : ",br);
 		return br.getReceiptId();
 	}
 	

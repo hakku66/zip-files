@@ -136,10 +136,10 @@ public abstract class AbstractBillController implements Initializable{
 	
 	private int customerId; 
 	private String customerGST;
-	private double totalSgst=0;
-	private double totalCgst=0;
-	private double totalIgst=0;
-	private double totalCess=0;
+	protected double totalSgst=0;
+	protected double totalCgst=0;
+	protected double totalIgst=0;
+	protected double totalCess=0;
 	
 	protected void setSellerInfo(String aliasName){
 		log.info("setSellerInfo : "+aliasName);
@@ -473,14 +473,14 @@ public abstract class AbstractBillController implements Initializable{
 			int _qty = Integer.parseInt(qty.getText());
 			
 			double _discVal = Double.parseDouble(discVal.getText().isEmpty() ? "0" : discVal.getText());
-			double _rate = Double.parseDouble(rate.getText());
+			double _rate = Double.parseDouble(rate.getText())-_discVal;
 			double totalDisc = 0;
 			double _amt = 0;
 			double cgst,igst,sgst,cess;
 			
 				totalDisc = toDouble(_qty * _discVal);
 			
-			_amt = toDouble(_qty * _rate )- totalDisc;
+			_amt = toDouble(_qty * _rate );
 			Item item=itemMap.get(description.getText());
 			if(item.isIgst()){
 				igst=item.getGstP()*_amt/100;
